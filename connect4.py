@@ -12,8 +12,8 @@ BLACK = (0,0,0)
 RED = (255,0,0)
 YELLOW = (255,255,0)
 
-ROW_COUNT = 6
-COLUMN_COUNT = 7
+ROW_COUNT = 9
+COLUMN_COUNT = 12
 
 def create_board():
 	board = np.zeros((ROW_COUNT,COLUMN_COUNT))
@@ -35,27 +35,27 @@ def print_board(board):
 
 def winning_move(board, piece):
 	# Check horizontal locations for win
-	for c in range(COLUMN_COUNT-3):
+	for c in range(COLUMN_COUNT-8):
 		for r in range(ROW_COUNT):
-			if board[r][c] == piece and board[r][c+1] == piece and board[r][c+2] == piece and board[r][c+3] == piece:
+			if board[r][c] == piece and board[r][c+1] == piece and board[r][c+2] == piece and board[r][c+3] == piece and board[r][c+4] == piece and board[r][c+5] == piece and board[r][c+6] == piece and board[r][c+7] == piece:
 				return True
 
 	# Check vertical locations for win
 	for c in range(COLUMN_COUNT):
-		for r in range(ROW_COUNT-3):
-			if board[r][c] == piece and board[r+1][c] == piece and board[r+2][c] == piece and board[r+3][c] == piece:
+		for r in range(ROW_COUNT-8):
+			if board[r][c] == piece and board[r+1][c] == piece and board[r+2][c] == piece and board[r+3][c] == piece and board[r+4][c] == piece and board[r+5][c] == piece and board[r+6][c] == piece and board[r+7][c] == piece:
 				return True
 
 	# Check positively sloped diaganols
-	for c in range(COLUMN_COUNT-3):
-		for r in range(ROW_COUNT-3):
-			if board[r][c] == piece and board[r+1][c+1] == piece and board[r+2][c+2] == piece and board[r+3][c+3] == piece:
+	for c in range(COLUMN_COUNT-8):
+		for r in range(ROW_COUNT-8):
+			if board[r][c] == piece and board[r+1][c+1] == piece and board[r+2][c+2] == piece and board[r+3][c+3] == piece and board[r+4][c+4] == piece and board[r+5][c+5] == piece and board[r+6][c+6] == piece and board[r+7][c+7] == piece:
 				return True
 
 	# Check negatively sloped diaganols
-	for c in range(COLUMN_COUNT-3):
-		for r in range(3, ROW_COUNT):
-			if board[r][c] == piece and board[r-1][c+1] == piece and board[r-2][c+2] == piece and board[r-3][c+3] == piece:
+	for c in range(COLUMN_COUNT-8):
+		for r in range(8, ROW_COUNT):
+			if board[r][c] == piece and board[r-1][c+1] == piece and board[r-2][c+2] == piece and board[r-3][c+3] == piece and board[r-4][c+4] == piece and board[r-5][c+5] == piece and board[r-6][c+6] == piece and board[r-7][c+7]:
 				return True
 
 def draw_board(board):
@@ -79,7 +79,7 @@ game_over = False
 turn = 0
 
 pygame.init()
-pygame.display.set_caption('Connect 4 in Python3. Edited By: Grant Patterson')
+pygame.display.set_caption('Connect 8 in Python3. Edited By: Grant Patterson')
 SQUARESIZE = 100
 
 width = COLUMN_COUNT * SQUARESIZE
